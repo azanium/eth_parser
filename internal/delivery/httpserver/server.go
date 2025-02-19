@@ -4,6 +4,7 @@ import (
 	"context"
 	"eth_parser/internal/app/parser"
 	"eth_parser/internal/app/repo"
+	"eth_parser/internal/delivery/httpserver/middleware"
 
 	"fmt"
 	"log"
@@ -37,9 +38,12 @@ func (s *Server) setup() {
 	mux.HandleFunc("/subscribe", s.handler.Subscribe)
 	mux.HandleFunc("/get-transaction/", s.handler.GetTransaction)
 
+	// Wrap the mux with the recovery middleware
+	handler := middleware.Recovery(mux)
+
 	s.server = &http.Server{
 		Addr:         fmt.Sprintf(":%s", s.port),
-		Handler:      mux,
+		Handler:      handler,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
