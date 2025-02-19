@@ -1,20 +1,10 @@
 # Ethereum Transaction Parser
 
-A Go-based service for parsing and tracking Ethereum transactions with real-time block monitoring capabilities.
+A Go-based service for parsing and tracking Ethereum transactions .
 
 ## Overview
 
-This service provides a robust interface for monitoring and tracking Ethereum blockchain transactions. It offers real-time block monitoring, address subscription, and transaction history retrieval capabilities through a RESTful API.
-
-### Key Features
-
-- Real-time block monitoring
-- Thread-safe transaction storage
-- Concurrent transaction processing
-- RESTful API interface
-- In-memory transaction storage
-- ERC20 transfer tracking
-- Comprehensive error handling
+This service provides a robust interface for monitoring and tracking Ethereum blockchain transactions. 
 
 ## Getting Started
 
@@ -89,7 +79,7 @@ Request Body:
 
 ```json
 {
-    "address": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e", "status": true
+    "address": "ADDRESS", "status": true
 }
 ```
 
@@ -109,7 +99,7 @@ GET /get-transaction/{ethereum_address}
 ```
 
 ```bash
-curl -X GET localhost:8080/get-transaction/0xCcE1351B6553040894fAf0490d8B7879B035DeF9
+curl -X GET localhost:8080/get-transaction/ADDRESS
 ```
 
 Retrieve all transactions for a subscribed address.
